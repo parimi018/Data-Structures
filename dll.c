@@ -147,6 +147,30 @@ struct dll* delpos(struct dll *h)
         }
 }
 
+void swap(struct dll *x,struct dll *y)
+{
+        int t=x->val;
+        x->val=y->val;
+        y->val=t;
+}
+
+struct dll* revlist(struct dll *h)
+{
+        struct dll *t=h,*H=h;
+        int n=listsize(h);
+        while(t->next)
+                t=t->next;
+        for(int i=0;i<n/2;i++)
+        {
+                swap(h,t);
+                t=t->before;
+                h=h->next;
+        }
+        printf("After reversing the list:\n");
+        return H;
+}
+
+
 void display(struct dll *h)
 {
         while(h)
